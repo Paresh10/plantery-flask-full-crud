@@ -3,7 +3,7 @@ import models
 #import blueprint
 from flask import Blueprint, request, jsonify
 
-from flask_bcrypt import generate_password_hash
+from flask_bcrypt import generate_password_hash, check_password_hash
 
 from playhouse.shortcuts import model_to_dict
 
@@ -27,7 +27,6 @@ def sign_up():
     payload['name'] = payload['name'].lower()
     payload['email'] = payload['email'].lower()
     payload['username'] = payload['username'].lower()
-    print(payload)
 
     try:
         # Check if the user exist
@@ -74,6 +73,44 @@ def sign_up():
 
 
 
+#Login route
+@users.route('/login', methods=['POST'])
+def log_in():
+
+    payload = request.get_json()
+    # Lower case all the user inputs
+    # payload['name'] = payload['name'].lower()
+    # payload['email'] = payload['email'].lower()
+    payload['username'] = payload['username'].lower()
+
+    try:
+
+        #Check if user exsit
+        user = models.User.get(models.User.username == payload['username'])
+
+        #Convert users into dict
+        user_dict = model_to_dict(user)
+
+        #Chck if the password is correct
+        check_password = check_password_hash(user_dict['password'], payload['password'])
+
+        # if password is correct then move forward
+        if (check_password):
+            #log_in user here
+            login_user(user)
+
+            # Remove the password while reponding
+            user_dict.pop('password')
+
+            return jsonify(
+                data=user_dict,
+                message=f"Welcome back {user_dict['name']}",
+                status=200
+            ), 200
+
+        pass
+    except Exception as e:
+        raise
 
 
 
