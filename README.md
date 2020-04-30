@@ -15,7 +15,7 @@ Fully functional ```CRUD``` ```React``` & ```Flask``` app that provide thorough 
 #### ```Model-User```
      
 | User           | Type        |
-|::-------------:| -----::     |
+| -------------  |:----------::|
 | Name           | CharFeild() |
 | Email          | CharFeild() |
 | Username       | CharFeild() |
