@@ -125,6 +125,33 @@ def log_in():
             status=401
         ), 401
 
+#User delete route
+@users.route('/<id>', methods=['DELETE'])
+def user_delete(id):
+
+    try:
+        # Get user by id thru querieng
+        user_to_delete = models.User.get_by_id(id)
+
+        # For now delette the user.
+        # COME BACK TO THIS AFTER USERS HAVE PLANTS AND RE-WRITE THE DELETE QUERY
+        user_to_delete.delete_instance()
+
+        return jsonify(
+            data={},
+            message=f"Sorry to see you go user with id => {id} was deleted",
+            status=200
+        ), 200
+
+
+    except models.DoesNotExist:
+        return jsonify(
+            data={
+                'error': "404 not found",
+            },
+            message="User doesn't exist.",
+            status=404
+        ), 404
 
 
 
