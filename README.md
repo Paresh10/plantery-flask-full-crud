@@ -36,10 +36,10 @@ Fully functional ```CRUD``` ```React``` & ```Flask``` app that provide thorough 
 | Description    | CharFeild() |  –
 
 
-#### ```Related Model```
-| PlantId        | Plant       | UserId   |
-|:: -----------  |::---------::| -----::  |
-| plant.id       | plant.name  | user.id  |
+#### ```Related Plant-Model```
+| PlantId       | Plant         | UserId   |
+| ------------- |:-------------:| -----:   |
+| plant.id      | plant.name    | user.id  |
 
 ```
 REST–ROUTES-PlANT
