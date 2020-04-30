@@ -38,13 +38,13 @@ Fully functional ```CRUD``` ```React``` & ```Flask``` app that provide thorough 
 
 #### ```Related Model```
 | PlantId        | Plant       | UserId   |
-|:: -------------  |::------------::| -----::  |
+|:: -----------  |::------------::| -----::  |
 | plant.id       | plant.name  | user.id  |
 
 
 #### ```REST–ROUTES-PlANT```  
-| URL                | HTTP VERB  | ACTION  | Description       |
-| ::-------------    |::---------:| -----:: | ----------------::|
+| URL                | HTTP VERB  | ACTION  | Description       | result |
+| ::-------------    |::---------:| -----:: | ----------------::|-------:|
 |/plants             | GET        |  Index  | Show all plants   |
 |/plants/new         | POST       |  New    | Add new plant     |
 |/plants/:id/edit    | GET        |  Edit   | Plant for edit    |  
