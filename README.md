@@ -38,7 +38,7 @@ Fully functional ```CRUD``` ```React``` & ```Flask``` app that provide thorough 
 
 #### ```Related Model```
 | PlantId        | Plant       | UserId   |
-|:: -----------  |::------------::| -----::  |
+|:: -----------  |::---------::| -----::  |
 | plant.id       | plant.name  | user.id  |
 
 ```
