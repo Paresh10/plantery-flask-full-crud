@@ -16,10 +16,10 @@ Fully functional ```CRUD``` ```React``` & ```Flask``` app that provide thorough 
 
 | User           | Type        | ID     |
 | -------------  |:-----------:| -----: |
-| Name           | CharFeild() |
-| Email          | CharFeild() |
-| Username       | CharFeild() |
-| Password       | CharFeild() |
+| Name           | CharFeild() |  –
+| Email          | CharFeild() |  –
+| Username       | CharFeild() |  –
+| Password       | CharFeild() |  –
 
 #### ```Related User-Model```
 | UserId        | User          | PlantId  |
@@ -30,10 +30,10 @@ Fully functional ```CRUD``` ```React``` & ```Flask``` app that provide thorough 
 #### ```Model-Plant```  
 | Plant          | Type        | ID     |
 | -------------  |:-----------:| -----: |
-| Name           | CharFeild() |
-| posted_on      | datetime()  |
-| Region         | CharFeild() |
-| Description    | CharFeild() |
+| Name           | CharFeild() |  –
+| posted_on      | datetime()  |  –
+| Region         | CharFeild() |  –
+| Description    | CharFeild() |  –
 
 
 #### ```Related Model```
