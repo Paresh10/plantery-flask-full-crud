@@ -1,0 +1,1 @@
+# plantery-flask-full-crud
