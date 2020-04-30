@@ -44,7 +44,7 @@ Fully functional ```CRUD``` ```React``` & ```Flask``` app that provide thorough 
 
 #### ```REST–ROUTES-PlANT```  
 | URL                | HTTP VERB  | ACTION  | Description       |
-| ::-------------    |::---------:| -----:: | ---------------::
+| ::-------------    |::---------:| -----:: | ----------------::|
 |/plants             | GET        |  Index  | Show all plants   |
 |/plants/new         | POST       |  New    | Add new plant     |
 |/plants/:id/edit    | GET        |  Edit   | Plant for edit    |  
@@ -53,7 +53,7 @@ Fully functional ```CRUD``` ```React``` & ```Flask``` app that provide thorough 
 
 #### ```REST–ROUTES-USER```  
 | URL                | HTTP VERB  | ACTION  | Description                 |
-| ::-------------    |::---------:| -----:: | ---------------------------::
+| ::-------------    |::---------:| -----:: | --------------------------::|
 |/users/signup       | POST       |  Sign up form   | Sign up new user    |
 |/users/login        | POST       |  Log in form    | Log in user         |
 |/users/:id/plants   | GET        |  User's plants  | Show user's plants  |  
