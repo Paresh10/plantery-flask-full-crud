@@ -12,7 +12,8 @@ Fully functional ```CRUD``` ```React``` & ```Flask``` app that provide thorough 
 6. User can all see their postings in the see my plants tab which contains all the information about their added or updated plant.
 7. User can delete their account which will delete all the information about them including all the postings.
 
-#### ```Model-User```     
+#### ```Model-User```
+     
 | User           | Type        |
 |::-------------:| -----::     |
 | Name           | CharFeild() |
