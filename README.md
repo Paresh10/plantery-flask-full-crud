@@ -13,9 +13,8 @@ Fully functional ```CRUD``` ```React``` & ```Flask``` app that provide thorough 
 7. User can delete their account which will delete all the information about them including all the postings.
 
 #### ```Model-User```
-     
-| User           | Type        |
-| -------------  |:----------::|
+| User           | Type        | ID     |
+| -------------  |:-----------:| -----: |
 | Name           | CharFeild() |
 | Email          | CharFeild() |
 | Username       | CharFeild() |
@@ -28,13 +27,12 @@ Fully functional ```CRUD``` ```React``` & ```Flask``` app that provide thorough 
 
 
 #### ```Model-Plant```  
-| Plants         | Type        |
-|::-------------:| -----::     |
+| Plant          | Type        | ID     |
+| -------------  |:-----------:| -----: |
 | Name           | CharFeild() |
 | posted_on      | datetime()  |
 | Region         | CharFeild() |
 | Description    | CharFeild() |
-
 #### ```Related Model```
 | PlantId        | Plant       | UserId   |
 | -------------  |:------------:| -----:  |
