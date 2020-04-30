@@ -32,10 +32,6 @@ class Plant(Model):
     belongs_to = ForeignKeyField(User, backref='plants')
 
 
-
-
-
-
 def connect_to_database():
     DATABASE.connect()
 
