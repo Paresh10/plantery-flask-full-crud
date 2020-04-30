@@ -108,9 +108,22 @@ def log_in():
                 status=200
             ), 200
 
-        pass
-    except Exception as e:
-        raise
+        # If password doesn't match
+        else:
+            return jsonify(
+                data={},
+                message="Username or password doesn't match",
+                status=401
+            ), 401
+
+    # If user doesn't exsit in the database
+    except models.DoesNotExist:
+
+        return jsonify(
+            data={},
+            message="Can't find the user with the username. Signup to continue",
+            status=401
+        ), 401
 
 
 
