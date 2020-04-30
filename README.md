@@ -41,10 +41,10 @@ Fully functional ```CRUD``` ```React``` & ```Flask``` app that provide thorough 
 |:: -----------  |::------------::| -----::  |
 | plant.id       | plant.name  | user.id  |
 
-
+```
 #### ```REST–ROUTES-PlANT```  
-| URL                | HTTP VERB  | ACTION  | Description       | result |
-| ::-------------    |::---------:| -----:: | ----------------::|-------:|
+| URL                | HTTP VERB  | ACTION  | Description       |
+| ::-------------    |::---------:| -----:: | ----------------::|
 |/plants             | GET        |  Index  | Show all plants   |
 |/plants/new         | POST       |  New    | Add new plant     |
 |/plants/:id/edit    | GET        |  Edit   | Plant for edit    |  
@@ -60,7 +60,7 @@ Fully functional ```CRUD``` ```React``` & ```Flask``` app that provide thorough 
 |/users/:id/plants   | PUT        |  Update         | Plant to update     |
 |/users/plants/:id   | DELETE     |  Delete         | Plant to delete     |
 |/users/:id          | DELETE     |  Delete         | Delete user profile |
-
+```
 #### Wireframes:
 ![alt text](https://i.imgur.com/cbD3bfX.jpg)
 ![alt text](https://i.imgur.com/2umptRu.jpg)
