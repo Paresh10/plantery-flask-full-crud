@@ -1,6 +1,9 @@
 # Import flask here in app.py
 from flask import Flask, jsonify
 
+#Import cors here
+from flask_cors import CORS
+
 # Import models here
 import models
 
@@ -26,6 +29,10 @@ PORT=8000
 
 # Instantiate flask class to create an app
 app = Flask(__name__)
+
+#Implement cors for users
+CORS(users, origins=['http://localhost:3000'], supports_credentials=True)
+CORS(plants, origins=['http://localhost:3000'], supports_credentials=True)
 
 #Setup a secret key for session. Login manager comes with session
 app.secret_key = "Creating RESTFUL REACT-FLASK APP. SO MUCH FUN!!!"
