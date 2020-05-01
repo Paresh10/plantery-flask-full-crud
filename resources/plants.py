@@ -12,6 +12,27 @@ from playhouse.shortcuts import model_to_dict
 plants = Blueprint('plants', 'plants')
 
 
+# Get index route for plants
+@plants.route('/', methods=['GET'])
+def get_all_plants():
+    """This function will get all the plants"""
+
+    all_plants = models.Plant.select()
+
+    plants = [model_to_dict(plant) for plant in all_plants]
+
+    # Remove password from response
+    for plant in plants:
+        plant['belongs_to'].pop('password')
+
+    return jsonify(
+        data=plants,
+        message=f"Here are all {len(plants)} plants found!",
+        status=200
+    ), 200
+
+
+
 # Creae route for plants
 @plants.route('/', methods=['POST'])
 @login_required
