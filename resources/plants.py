@@ -65,8 +65,27 @@ def create_plant():
     ), 201
 
 
+# Show route for plants
+@plants.route('/<id>', methods=['GET'])
+def users_plants(id):
 
+    plant = models.Plant.get_by_id(id)
+    plant_dict = model_to_dict(plant)
+    plant_dict['belongs_to'].pop('password')
+    plant_dict['belongs_to'].pop('id')
+    plant_dict['belongs_to'].pop('username')
 
+    if current_user.is_authenticated:
+
+        return jsonify(
+            data=plant_dict,
+            messagage="Here is the found plant"
+        )
+    else:
+        return jsonify(
+            data={},
+            message="Something went wrong"
+        )
 
 
 
