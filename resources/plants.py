@@ -125,8 +125,44 @@ def plant_to_delete(id):
             status=404
         ), 404
 
+#Plant Update route
+@plants.route('/<id>', methods=['PUT'])
+@login_required
+def update_plant(id):
 
+    payload = request.get_json()
 
+    plant_to_update = models.Plant.get_by_id(id)
+
+    if plant_to_update.belongs_to.id == current_user.id:
+
+        if 'name' in payload:
+            plant_to_update.name = payload['name']
+        if 'region' in payload:
+            plant_to_update.region = payload['region']
+        if 'description' in payload:
+            plant_to_update.description = payload['description']
+
+        plant_to_update.save()
+
+        plant_to_update_dict = model_to_dict(plant_to_update)
+
+        plant_to_update_dict['belongs_to'].pop('password')
+
+        return jsonify(
+            data=plant_to_update_dict,
+            message=f"{plant_to_update_dict['name']} was updated!",
+            status=200
+        ), 200
+
+    else:
+        return jsonify(
+            data={
+                'error': 'Action can not be performed',
+            },
+            message="Can only update the plant that belongs to user",
+            status=403
+        ), 403
 
 
 
