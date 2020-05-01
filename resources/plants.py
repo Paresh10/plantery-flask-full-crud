@@ -67,7 +67,8 @@ def create_plant():
 
 # Show route for plants
 @plants.route('/<id>', methods=['GET'])
-def users_plants(id):
+def show_plants(id):
+    """This function will show the plants by id"""
 
     plant = models.Plant.get_by_id(id)
     plant_dict = model_to_dict(plant)
@@ -92,6 +93,7 @@ def users_plants(id):
 @plants.route('/<id>', methods=['DELETE'])
 @login_required
 def plant_to_delete(id):
+    """This function will delete the plany by it's id"""
 
     try:
         #Get plants by id
@@ -129,6 +131,7 @@ def plant_to_delete(id):
 @plants.route('/<id>', methods=['PUT'])
 @login_required
 def update_plant(id):
+    """This function will update the plant by it's id"""
 
     payload = request.get_json()
 

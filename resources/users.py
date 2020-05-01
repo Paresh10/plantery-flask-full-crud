@@ -7,10 +7,13 @@ from flask_bcrypt import generate_password_hash, check_password_hash
 
 from playhouse.shortcuts import model_to_dict
 
-from flask_login import login_user, current_user, logout_user
+from flask_login import login_user, current_user, logout_user, login_required
 
 # Create a blueprint
 users = Blueprint('users', 'users')
+
+#declare the blueprints here
+plants = Blueprint('plants', 'plants')
 
 #Test route
 @users.route('/', methods=['GET'])
@@ -124,6 +127,31 @@ def log_in():
             message="Can't find the user with the username. Signup to continue",
             status=401
         ), 401
+
+
+#User show route
+# @users.route('/<id>', methods=['GET'])
+# @login_required
+# def show_user(id):
+#     """This function will show the users by it's id"""
+#     user = models.User.get_by_id(id) #.join(Plant).where(Plant.id == id)
+#     user_dict = model_to_dict(user)
+#
+#     plants = models.Plant.get_by_id(id)
+#
+#     plant_dict = model_to_dict(plants)
+#
+#     # plant_dict = [model_to_dict(plant) for plant in plants]
+#
+#     # if plants.belongs_to.id == current_user.id:
+#
+#     return jsonify(
+#         data={
+#             'plant': plant_dict,
+#             'user': user_dict
+#         },
+#         message="Here is the found user"
+#     )
 
 #User logout route
 @users.route('/logout', methods=['GET'])
