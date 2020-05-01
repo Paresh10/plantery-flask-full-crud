@@ -7,7 +7,7 @@ from flask_bcrypt import generate_password_hash, check_password_hash
 
 from playhouse.shortcuts import model_to_dict
 
-from flask_login import login_user
+from flask_login import login_user, current_user, logout_user
 
 # Create a blueprint
 users = Blueprint('users', 'users')
@@ -124,6 +124,15 @@ def log_in():
             message="Can't find the user with the username. Signup to continue",
             status=401
         ), 401
+
+#User logout route
+@users.route('/logout', methods=['GET'])
+def user_logout():
+    logout_user()
+
+    return jsonify(
+        message="User logged out"
+    )
 
 #User delete route
 @users.route('/<id>', methods=['DELETE'])

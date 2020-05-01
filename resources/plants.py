@@ -88,6 +88,42 @@ def users_plants(id):
         )
 
 
+#Delete route
+@plants.route('/<id>', methods=['DELETE'])
+@login_required
+def plant_to_delete(id):
+
+    try:
+        #Get plants by id
+        plant = models.Plant.get_by_id(id)
+
+        if plant.belongs_to.id == current_user.id:
+            plant.delete_instance()
+
+            return jsonify(
+                data={},
+                message="Plant was deleted",
+                status=200
+            ), 200
+
+        else :
+            return jsonify(
+                data={
+                    'error': '403 forbidden'
+                },
+                message="Plant doesn't belongs to user",
+                status=403
+            ), 403
+
+
+    except models.DoesNotExist:
+        return jsonify(
+            data={
+                'error': 'Opps - 404'
+            },
+            message="No dog was found",
+            status=404
+        ), 404
 
 
 
