@@ -130,28 +130,21 @@ def log_in():
 
 
 #User show route
-# @users.route('/<id>', methods=['GET'])
-# @login_required
-# def show_user(id):
-#     """This function will show the users by it's id"""
-#     user = models.User.get_by_id(id) #.join(Plant).where(Plant.id == id)
-#     user_dict = model_to_dict(user)
-#
-#     plants = models.Plant.get_by_id(id)
-#
-#     plant_dict = model_to_dict(plants)
-#
-#     # plant_dict = [model_to_dict(plant) for plant in plants]
-#
-#     # if plants.belongs_to.id == current_user.id:
-#
-#     return jsonify(
-#         data={
-#             'plant': plant_dict,
-#             'user': user_dict
-#         },
-#         message="Here is the found user"
-#     )
+@users.route('/myplants', methods=['GET'])
+@login_required
+def show_user_plants():
+    """This function will show the user's plants"""
+
+    current_user_plants_dicts = [model_to_dict(plant) for plant in current_user.plants]
+
+    for plants_dict in current_user_plants_dicts:
+        plants_dict['belongs_to'].pop('password')
+
+    return jsonify(
+        data=current_user_plants_dicts,
+        message=f"{current_user.name}'s Plants'"
+    )
+
 
 #User logout route
 @users.route('/logout', methods=['GET'])
