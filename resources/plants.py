@@ -16,20 +16,30 @@ plants = Blueprint('plants', 'plants')
 @plants.route('/', methods=['GET'])
 def get_all_plants():
     """This function will get all the plants"""
+    try:
+        all_plants = models.Plant.select()
 
-    all_plants = models.Plant.select()
+        plants = [model_to_dict(plant) for plant in all_plants]
 
-    plants = [model_to_dict(plant) for plant in all_plants]
+        # Remove password from response
+        for plant in plants:
+            plant['belongs_to'].pop('password')
 
-    # Remove password from response
-    for plant in plants:
-        plant['belongs_to'].pop('password')
+        return jsonify(
+            data=plants,
+            message=f"Here are all {len(plants)} plants found!",
+            status=200
+        ), 200
 
-    return jsonify(
-        data=plants,
-        message=f"Here are all {len(plants)} plants found!",
-        status=200
-    ), 200
+
+    except models.DoesNotExist:
+        return jsonify(
+            data={
+                'error': 'oops'
+            },
+            message="'We didn't found any plants'"
+
+        )
 
 
 
