@@ -163,38 +163,18 @@ def user_delete(id):
         f = current_user.plants
         for plant in f:
             plant.delete_instance()
-        # f.execute()
+
         # Get user by id thru querieng
         user_to_delete = models.User.get_by_id(id)
 
-        # For now delete the user.
-        # COME BACK TO THIS AFTER USERS HAVE PLANTS AND RE-WRITE THE DELETE QUERY
-        q = user_to_delete.delete()
-        q.execute()
-
-        # current_users_plants = models.Plant.current_user.plants
-        # current_user_plants = current_user.plants
-        # print("current_user_plants")
-        # print(current_user_plants)
-        #
+        q = user_to_delete.delete_instance()
+        # q.execute()
 
         return jsonify(
             data={},
             message=f"Sorry to see you go. User with id => {id} was deleted",
             status=200
         ), 200
-    # def show_user_plants():
-    #     """This function will show user's plants"""
-    #
-    #     current_user_plants_dicts = [model_to_dict(plant) for plant in current_user.plants]
-    #
-    #     for plants_dict in current_user_plants_dicts:
-    #         plants_dict['belongs_to'].pop('password')
-    #
-    #     return jsonify(
-    #         data=current_user_plants_dicts,
-    #         message=f"{current_user.name}'s Plants'"
-    #     )
 
 
     except models.DoesNotExist:
