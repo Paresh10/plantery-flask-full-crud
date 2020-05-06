@@ -1,6 +1,5 @@
 import os
 
-from playhouse.db_url import connect
 
 from peewee import *
 
@@ -8,6 +7,9 @@ from peewee import *
 import datetime
 
 from flask_login import UserMixin
+
+from playhouse.db_url import connect
+
 
 if 'ON_HEROKU' in os.environ: 
                              
