@@ -1,5 +1,7 @@
+import os
+
 # Import flask here in app.py
-from flask import Flask, jsonify
+from flask import Flask, jsonify, g
 
 #Import cors here
 from flask_cors import CORS
@@ -82,10 +84,28 @@ app.register_blueprint(plants, url_prefix='/api/v1/plants')
 
 
 
+@app.before_request 
+def before_request():
+  """Connect to the db before each request"""
+  # store the database as a global var in g
+  print("you should see this before each request") 
+  g.db = models.DATABASE
+  g.db.connect()
+
+
+@app.after_request 
+def after_request(response):
+  """Close the db connetion after each request"""
+  print("you should see this after each request") 
+  g.db.close()
+  return response
 
 
 
 
+if 'ON_HEROKU' in os.environ: 
+  print('\non heroku!')
+  models.connect_to_database()
 
 
 #Setup the server here
